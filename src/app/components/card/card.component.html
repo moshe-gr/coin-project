@@ -1,0 +1,40 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <h4 class="card-title col">{{ card.symbol }}</h4>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="{{card.id}}1">
+                <label class="custom-control-label" for="{{card.id}}1"></label>
+            </div>
+        </div>
+        <div>
+            {{ card.name }}
+        </div>        
+        <p>
+            <button type="button" class="btn btn-primary" (click)="collapse.toggle(); moreInfo(card.id);" [attr.aria-expanded]="!isCollapsed"
+              aria-controls="collapseExample">
+              {{more}} info
+            </button>
+        </p>
+        <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+            <div class="card">
+                <div class="text-center mt-5" *ngIf="!infoList.pic">
+                    <div class="spinner-grow text-success" role="status"></div>
+                    <div>
+                        <strong>Loading...</strong>
+                    </div>
+                </div>
+                <div class="card-body" *ngIf="infoList.pic">
+                    <img src="{{infoList.pic}}" alt="coin pic">
+                    <div>
+                        <span class="text-warning font-weight-bold">&#36;</span> {{infoList.usd}}
+                        <br>
+                        <span class="text-warning font-weight-bold">&#8364;</span> {{infoList.eur}}
+                        <br>
+                        <span class="text-warning font-weight-bold">&#8362;</span> {{infoList.ils}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

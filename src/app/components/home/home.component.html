@@ -1,0 +1,11 @@
+<main class="container">    
+    <div class="row" *ngIf="coinList.length > 5">
+        <app-card [card]="card" *ngFor="let card of coinList" class="col-md-4"></app-card>
+    </div>
+    <div class="text-center mt-5" *ngIf="coinList.length < 50">
+        <div class="spinner-border text-info" role="status" style="width: 3rem; height: 3rem;"></div>
+        <div>
+            <strong>Loading...</strong>
+        </div>
+    </div>
+</main>
