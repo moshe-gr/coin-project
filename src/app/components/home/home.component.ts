@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CoinsModel } from 'src/app/models/coins-model';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -6,15 +7,14 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  coinList = [];
+  coinList: CoinsModel[] = [];
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    for(let i = 0; i<50; i++){
+    for(let i = 0; i < 50; i++){
       this.apiService.get().subscribe(info => {this.coinList.push({symbol: info[i].symbol, name: info[i].name, id: info[i].id})})
     }
-    console.log(this.coinList)
   }
 
 }
