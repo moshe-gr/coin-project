@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from 'src/app/services/api.service';
 import { SwitchService } from 'src/app/services/switch.service';
 

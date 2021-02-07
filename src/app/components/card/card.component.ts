@@ -1,4 +1,5 @@
 import { Component, DoCheck, Input, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CoinInfoModel } from 'src/app/models/coin-info-model';
 import { CoinsModel } from 'src/app/models/coins-model';
 import { ApiService } from 'src/app/services/api.service';
@@ -17,10 +18,18 @@ export class CardComponent implements OnInit, DoCheck{
   cb;
   
 
-  constructor(private apiService: ApiService, private switchService: SwitchService) { }
+  constructor(private apiService: ApiService, private switchService: SwitchService, private modalService: NgbModal) { }
 
   ngDoCheck(): void {
     this.cb = document.getElementById(this.card.id);
+    if(this.cb){
+      if(!this.switchService.switchList.find(test => test == this.card.id)){
+        this.cb.checked = false;
+      }
+      else{
+        this.cb.checked = true;
+      }
+    }
     if(this.switchService.switchList.length > 4 && this.cb){      
       if(!this.cb.checked){
         this.cb.disabled = true
@@ -34,7 +43,8 @@ export class CardComponent implements OnInit, DoCheck{
     }
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   moreInfo(id: string): void{
     if(this.isCollapsed){
@@ -57,6 +67,14 @@ export class CardComponent implements OnInit, DoCheck{
     else if(!this.cb.checked){
       this.switchService.switchList.splice(this.switchService.switchList.indexOf(this.card.id), 1);
     }
+  }
+  modal(content): void{
+    if(this.switchService.switchList.length > 4 && !this.cb.checked){
+      this.open(content)
+    }
+  }
+  open(content) {
+    this.modalService.open(content);
   }
 
 }
