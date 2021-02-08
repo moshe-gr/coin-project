@@ -1,0 +1,5 @@
+<form class="d-flex my-1 mx-md-5" #mySearch="ngForm">
+    <input #cardId class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success ml-2" type="submit" (click)="search(cardId.value)">Search</button>
+</form>
+<app-card [card]="searchInfo" *ngIf="res"></app-card>

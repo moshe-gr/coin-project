@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { CardComponent } from './components/card/card.component';
 import { AboutComponent } from './components/about/about.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LiveReportsComponent } from './components/live-reports/live-reports.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { LiveReportsComponent } from './components/live-reports/live-reports.com
     HomeComponent,
     CardComponent,
     AboutComponent,
-    LiveReportsComponent
+    LiveReportsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

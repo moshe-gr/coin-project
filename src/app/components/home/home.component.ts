@@ -12,9 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    for(let i = 0; i < 50; i++){
-      this.apiService.get().subscribe(info => {this.coinList.push({symbol: info[i].symbol, name: info[i].name, id: info[i].id})})
-    }
+    this.apiService.get().subscribe(info => {for(let i = 0; i < 50; i++){this.coinList.push({symbol: info[i].symbol, name: info[i].name, id: info[i].id})}})
   }
 
 }

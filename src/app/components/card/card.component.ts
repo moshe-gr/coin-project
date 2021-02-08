@@ -1,5 +1,5 @@
 import { Component, DoCheck, Input, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CoinInfoModel } from 'src/app/models/coin-info-model';
 import { CoinsModel } from 'src/app/models/coins-model';
 import { ApiService } from 'src/app/services/api.service';
@@ -16,9 +16,10 @@ export class CardComponent implements OnInit, DoCheck{
   more: string = "More";
   isCollapsed = true;
   cb;
-  
 
-  constructor(private apiService: ApiService, private switchService: SwitchService, private modalService: NgbModal) { }
+  constructor(private apiService: ApiService, private switchService: SwitchService, private modalService: NgbModal, config: NgbModalConfig) {
+    config.backdrop = 'static';
+   }
 
   ngDoCheck(): void {
     this.cb = document.getElementById(this.card.id);

@@ -41,7 +41,7 @@
 <ng-template #content let-d="dismiss">
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
-      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <button type="button" class="close" aria-label="Close" (click)="d()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -51,7 +51,11 @@
     <h5>You selected:</h5>
     <ul>
         <li *ngFor="let i of this.switchService.switchList">
-            {{ i }}
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="{{ i }}" (change)="setSwitch()" checked="true">
+                <label class="custom-control-label" for="{{ i }}" (click)="d()"></label>
+                {{ i }}
+            </div>
         </li>
     </ul>
   </ng-template>

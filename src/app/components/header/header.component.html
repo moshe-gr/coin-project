@@ -13,9 +13,6 @@
       <li class="nav-item" role="presentation">
         <a [routerLink]="['/about']" class="nav-link" [routerLinkActive]="['active']" id="pills-About-tab" data-bs-toggle="pill" role="tab">About</a>
       </li>
-      <form class="d-flex my-1 mx-md-5">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success ml-2" type="submit">Search</button>
-      </form>
+      <app-search></app-search>
     </ul>
 </header>
