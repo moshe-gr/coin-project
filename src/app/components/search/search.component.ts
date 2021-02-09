@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class SearchComponent implements OnInit {
   searchInfo: CoinsModel = {symbol: null, name: null, id: null};
   res;
+  noRes = false;
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
@@ -21,7 +22,11 @@ export class SearchComponent implements OnInit {
       if(this.res){
         this.searchInfo.symbol = this.res.symbol,
         this.searchInfo.name = this.res.name,
-        this.searchInfo.id = this.res.id
+        this.searchInfo.id = this.res.id,
+        this.noRes = false
+      }
+      else{
+        this.noRes = true
       }
     })
   }
