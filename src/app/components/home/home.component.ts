@@ -1,18 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { CoinsModel } from 'src/app/models/coins-model';
 import { ApiService } from 'src/app/services/api.service';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  coinList: CoinsModel[] = [];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, public searchService: SearchService) { }
 
   ngOnInit(): void {
-    this.apiService.get().subscribe(info => {for(let i = 0; i < 50; i++){this.coinList.push({symbol: info[i].symbol, name: info[i].name, id: info[i].id})}})
+    this.apiService.get().subscribe(info => {
+      for(let i = 0; i < 50; i++){
+        if(!this.searchService.coinList.find(test => info[i].id == test.id)){
+          this.searchService.coinList = [...this.searchService.coinList, {symbol: info[i].symbol, name: info[i].name, id: info[i].id}]
+        }
+      }
+    })
   }
 
 }
