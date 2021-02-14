@@ -40,21 +40,21 @@
 </div>
 <ng-template #content let-d="dismiss">
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+      <h3 class="modal-title" id="modal-basic-title">Hi there!</h3>
       <button type="button" class="close" aria-label="Close" (click)="d()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <p>You can select only 5!</p>
+      <h4>You can select only 5!</h4>
     </div>
     <h5>You selected:</h5>
     <ul>
-        <li *ngFor="let i of this.switchService.switchList">
+        <li *ngFor="let id of switchList">
             <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="{{ i }}" (change)="setSwitch()" checked="true">
-                <label class="custom-control-label" for="{{ i }}" (click)="d()"></label>
-                {{ i }}
+                <input type="checkbox" class="custom-control-input" id="{{ id }}" (change)="setSwitch()" checked="true">
+                <label class="custom-control-label" for="{{ id }}" (click)="d()"></label>
+                {{ id }}
             </div>
         </li>
     </ul>

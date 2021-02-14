@@ -11,7 +11,7 @@ export class LiveReportsComponent implements OnInit {
   constructor(private switchService: SwitchService) { }
 
   ngOnInit(): void {
-    this.idList = this.switchService.switchList
+    this.switchService.switchList.subscribe(res => this.idList = res);
   }
 
 }

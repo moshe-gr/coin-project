@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
+import { CoinsModel } from 'src/app/models/coins-model';
 import { SearchService } from 'src/app/services/search.service';
 
 @Component({
@@ -8,16 +8,13 @@ import { SearchService } from 'src/app/services/search.service';
 })
 export class HomeComponent implements OnInit{
 
-  constructor(private apiService: ApiService, public searchService: SearchService) {  }
+  coinList: CoinsModel[] = [];
+
+  constructor(private searchService: SearchService) {  }
 
   ngOnInit(): void {
-    this.apiService.get().subscribe(info => {
-      for(let i = 0; i < 50; i++){
-        if(!this.searchService.coinList.find(coin => info[i].id == coin.id)){
-          this.searchService.coinList = [...this.searchService.coinList, {symbol: info[i].symbol, name: info[i].name, id: info[i].id}]
-        }
-      }
-    })
+    this.searchService.createCoins();
+    this.searchService.coinList.subscribe(coins => this.coinList = coins);
   }
 
 }

@@ -17,14 +17,15 @@ export class CardComponent implements OnInit, DoCheck{
   isCollapsed = true;  
   check = false;
   disable = false;
+  switchList: string[];
 
   constructor(private apiService: ApiService, private switchService: SwitchService, private modalService: NgbModal, config: NgbModalConfig) {
     config.backdrop = 'static';
    }
 
    ngDoCheck(): void {
-    !this.switchService.switchList.find(id => id == this.card.id)? this.check = false: this.check = true;
-    if(this.switchService.switchList.length > 4){      
+    !this.switchList.find(id => id == this.card.id)? this.check = false: this.check = true;
+    if(this.switchList.length > 4){      
       !this.check? this.disable = true: this.disable = false;
     }
     else{
@@ -33,6 +34,7 @@ export class CardComponent implements OnInit, DoCheck{
   }
 
   ngOnInit(): void {
+    this.switchService.switchList.subscribe(res => this.switchList = res);
   }
 
   moreInfo(id: string): void{
@@ -48,15 +50,15 @@ export class CardComponent implements OnInit, DoCheck{
   }
   setSwitch(): void{
     this.check? false: true;    
-    if(!this.switchService.switchList.find(id => id == this.card.id)){
-      this.switchService.switchList.push(this.card.id);
+    if(!this.switchList.find(id => id == this.card.id)){
+      this.switchService.add(this.card.id);
     }
     else{
-      this.switchService.switchList.splice(this.switchService.switchList.indexOf(this.card.id), 1);
+      this.switchService.reduce(this.card.id);
     }
   }
   modal(content): void{
-    if(this.switchService.switchList.length > 4 && !this.check){
+    if(this.switchList.length > 4 && !this.check){
       this.open(content)
     }
   }
