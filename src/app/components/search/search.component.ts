@@ -18,11 +18,6 @@ export class SearchComponent implements OnInit {
 
   search(cardSymbol): void{
     this.res = this.searchService.coinList.find(coin => coin.symbol == cardSymbol);
-    if(this.res){
-      this.noRes = false
-    }
-    else{
-      this.noRes = true
-    }
+    this.res? this.noRes = false: this.noRes = true
   }
 }

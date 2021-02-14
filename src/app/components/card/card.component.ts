@@ -14,33 +14,21 @@ export class CardComponent implements OnInit, DoCheck{
   @Input() card: CoinsModel;
   infoList: CoinInfoModel = {pic: null, usd: null, ils: null, eur: null, cache: 0};
   more: string = "More";
-  isCollapsed = true;
-  cb;
+  isCollapsed = true;  
+  check = false;
+  disable = false;
 
   constructor(private apiService: ApiService, private switchService: SwitchService, private modalService: NgbModal, config: NgbModalConfig) {
     config.backdrop = 'static';
    }
 
-  ngDoCheck(): void {
-    this.cb = document.getElementById(this.card.id);
-    if(this.cb){
-      if(!this.switchService.switchList.find(id => id == this.card.id)){
-        this.cb.checked = false;
-      }
-      else{
-        this.cb.checked = true;
-      }
+   ngDoCheck(): void {
+    !this.switchService.switchList.find(id => id == this.card.id)? this.check = false: this.check = true;
+    if(this.switchService.switchList.length > 4){      
+      !this.check? this.disable = true: this.disable = false;
     }
-    if(this.switchService.switchList.length > 4 && this.cb){      
-      if(!this.cb.checked){
-        this.cb.disabled = true
-      }
-      else{
-        this.cb.disabled = false
-      }
-    }
-    else if(this.switchService.switchList.length < 5 && this.cb){
-      this.cb.disabled = false
+    else{
+      this.disable = false;
     }
   }
 
@@ -59,18 +47,16 @@ export class CardComponent implements OnInit, DoCheck{
     }
   }
   setSwitch(): void{
-    this.cb = document.getElementById(this.card.id);
+    this.check? false: true;    
     if(!this.switchService.switchList.find(id => id == this.card.id)){
-      if(this.cb.checked){
-        this.switchService.switchList.push(this.card.id);
-      }
+      this.switchService.switchList.push(this.card.id);
     }
-    else if(!this.cb.checked){
+    else{
       this.switchService.switchList.splice(this.switchService.switchList.indexOf(this.card.id), 1);
     }
   }
   modal(content): void{
-    if(this.switchService.switchList.length > 4 && !this.cb.checked){
+    if(this.switchService.switchList.length > 4 && !this.check){
       this.open(content)
     }
   }
