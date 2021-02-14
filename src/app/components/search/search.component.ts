@@ -8,20 +8,17 @@ import { SearchService } from 'src/app/services/search.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  searchInfo: CoinsModel = {symbol: null, name: null, id: null};
-  res;
+  
+  res: CoinsModel;
   noRes = false;
   constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
   }
 
-  search(cardId): void{
-    this.res = this.searchService.coinList.find(test => test.symbol == cardId);
+  search(cardSymbol): void{
+    this.res = this.searchService.coinList.find(coin => coin.symbol == cardSymbol);
     if(this.res){
-      this.searchInfo.symbol = this.res.symbol,
-      this.searchInfo.name = this.res.name,
-      this.searchInfo.id = this.res.id,
       this.noRes = false
     }
     else{

@@ -24,7 +24,7 @@ export class CardComponent implements OnInit, DoCheck{
   ngDoCheck(): void {
     this.cb = document.getElementById(this.card.id);
     if(this.cb){
-      if(!this.switchService.switchList.find(test => test == this.card.id)){
+      if(!this.switchService.switchList.find(id => id == this.card.id)){
         this.cb.checked = false;
       }
       else{
@@ -60,7 +60,7 @@ export class CardComponent implements OnInit, DoCheck{
   }
   setSwitch(): void{
     this.cb = document.getElementById(this.card.id);
-    if(!this.switchService.switchList.find(test => test == this.card.id)){
+    if(!this.switchService.switchList.find(id => id == this.card.id)){
       if(this.cb.checked){
         this.switchService.switchList.push(this.card.id);
       }
