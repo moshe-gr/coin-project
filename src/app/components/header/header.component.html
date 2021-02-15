@@ -3,7 +3,8 @@
       <h1 class="col">Cryptonite</h1>
       <img class="pic" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Cryptocurrency_logos.jpg/320px-Cryptocurrency_logos.jpg" alt="" width="150" height="95">
     </nav>
-    <ul class="nav nav-pills my-3" id="pills-tab" role="tablist">
+    
+    <ul class="nav nav-pills my-3" id="pills-tab" role="tablist">    
       <li class="nav-item" role="presentation">
         <a [routerLink]="['/']" class="nav-link" id="pills-home-tab" data-bs-toggle="pill" role="tab">Home</a>
       </li>
@@ -13,6 +14,6 @@
       <li class="nav-item" role="presentation">
         <a [routerLink]="['/about']" class="nav-link" [routerLinkActive]="['active']" id="pills-About-tab" data-bs-toggle="pill" role="tab">About</a>
       </li>
-      <app-search></app-search>
+      <li class="nav-item col-md"><app-search class="float-md-right"></app-search></li>    
     </ul>
 </header>
