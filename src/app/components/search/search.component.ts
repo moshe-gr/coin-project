@@ -10,7 +10,7 @@ import { SearchService } from 'src/app/services/search.service';
 export class SearchComponent implements OnInit {
   
   res: CoinsModel;
-  noRes = false;
+  noRes: string;
   constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
@@ -18,6 +18,6 @@ export class SearchComponent implements OnInit {
 
   search(cardSymbol): void{
     this.searchService.coinList.subscribe(coins => this.res = coins.find(coin => coin.symbol == cardSymbol));
-    this.res? this.noRes = false: this.noRes = true
+    this.res || !cardSymbol? this.noRes = "": this.noRes = "No results";
   }
 }
