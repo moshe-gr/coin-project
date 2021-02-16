@@ -12,7 +12,7 @@ import { SwitchService } from 'src/app/services/switch.service';
 })
 export class CardComponent implements OnInit, DoCheck{
   @Input() card: CoinsModel;
-  infoList: CoinInfoModel = {pic: null, usd: null, ils: null, eur: null, cache: 0};
+  infoList: CoinInfoModel = {id: null, pic: null, usd: null, ils: null, eur: null, cache: 0};
   more: string = "More";
   isCollapsed = true;  
   check = false;
@@ -24,6 +24,9 @@ export class CardComponent implements OnInit, DoCheck{
    }
 
    ngDoCheck(): void {
+    if(this.infoList.id && this.infoList.id != this.card.id && !this.isCollapsed){
+      this.apiService.getInfo(this.card.id).subscribe(info => {this.infoList = ({id: info.id, pic: info.image['small'], usd: info.market_data.current_price.usd, ils: info.market_data.current_price.ils, eur: info.market_data.current_price.eur, cache: Date.now()})}) 
+    }
     !this.switchList.find(id => id == this.card.id)? this.check = false: this.check = true;
     if(this.switchList.length > 4){      
       !this.check? this.disable = true: this.disable = false;
@@ -44,7 +47,7 @@ export class CardComponent implements OnInit, DoCheck{
     else if(!this.isCollapsed){
       this.more = "Hide"
       if(Date.now() - this.infoList.cache > 120000){
-        this.apiService.getInfo(id).subscribe(info => {this.infoList = ({pic: info.image['small'], usd: info.market_data.current_price.usd, ils: info.market_data.current_price.ils, eur: info.market_data.current_price.eur, cache: Date.now()})})
+        this.apiService.getInfo(id).subscribe(info => {this.infoList = ({id: info.id, pic: info.image['small'], usd: info.market_data.current_price.usd, ils: info.market_data.current_price.ils, eur: info.market_data.current_price.eur, cache: Date.now()})})
       }
     }
   }

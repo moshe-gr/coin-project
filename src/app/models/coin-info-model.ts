@@ -1,5 +1,8 @@
+import { Url } from "url";
+
 export interface CoinInfoModel {
-    pic: string;
+    id: string;
+    pic: Url;
     usd: number;
     ils: number;
     eur: number;
