@@ -3,7 +3,7 @@
         <div class="row">
             <h4 class="card-title col">{{ card.symbol }}</h4>
             <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="{{card.id}}" (change)="setSwitch()" [checked]="check" [disabled]="disable">
+                <input type="checkbox" class="custom-control-input" id="{{ card.id }}" (change)="setSwitch()" [checked]="check" [disabled]="disable">
                 <label class="custom-control-label" for="{{card.id}}"  (click)="modal(content)"></label>
             </div>
         </div>

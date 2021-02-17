@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SwitchService } from 'src/app/services/switch.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  none: number;
+
+  constructor(private switchService: SwitchService) { }
 
   ngOnInit(): void {
+    this.switchService.switchList.subscribe(rep => this.none = rep.length);
+    console.log(this.none)
   }
 
 }

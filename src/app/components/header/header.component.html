@@ -1,7 +1,7 @@
 <header class="container-fluid">
     <nav class="navbar navbar-light bg-light border-bottom border-dark border-2">
       <h1 class="col">Cryptonite</h1>
-      <img class="d-none d-md-block" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Cryptocurrency_logos.jpg/320px-Cryptocurrency_logos.jpg" alt="" width="150" height="95">
+      <img class="d-none d-md-block" src="assets/Cryptocurrency_logos.jpg" alt="" width="150" height="95">
     </nav>
     
     <ul class="nav nav-pills my-3" id="pills-tab" role="tablist">    
@@ -9,11 +9,13 @@
         <a [routerLink]="['/']" class="nav-link" id="pills-home-tab" data-bs-toggle="pill" role="tab">Home</a>
       </li>
       <li class="nav-item" role="presentation">
-        <a [routerLink]="['/live']" class="nav-link" [routerLinkActive]="['active']" id="pills-Live-reports-tab" data-bs-toggle="pill" role="tab">Live reports</a>
+        <a [routerLink]="['/live']" class="nav-link" [ngClass]="{'disabled': !none}" [routerLinkActive]="['active']" id="pills-Live-reports-tab" data-bs-toggle="pill" role="tab">Live reports</a>
       </li>
       <li class="nav-item" role="presentation">
         <a [routerLink]="['/about']" class="nav-link" [routerLinkActive]="['active']" id="pills-About-tab" data-bs-toggle="pill" role="tab">About</a>
       </li>
-      <li class="nav-item col-md"><app-search class="float-md-right"></app-search></li>    
+      <li class="nav-item col-md">
+        <app-search class="float-md-right"></app-search>
+      </li>    
     </ul>
 </header>
