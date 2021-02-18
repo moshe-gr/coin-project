@@ -14,7 +14,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.switchService.switchList.subscribe(rep => this.none = rep.length);
-    console.log(this.none)
   }
 
 }

@@ -12,6 +12,7 @@ import { AboutComponent } from './components/about/about.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LiveReportsComponent } from './components/live-reports/live-reports.component';
 import { SearchComponent } from './components/search/search.component';
+import { LiveCoinComponent } from './components/live-coin/live-coin.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SearchComponent } from './components/search/search.component';
     CardComponent,
     AboutComponent,
     LiveReportsComponent,
-    SearchComponent
+    SearchComponent,
+    LiveCoinComponent
   ],
   imports: [
     BrowserModule,

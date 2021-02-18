@@ -1,5 +1,5 @@
-<ul>
-    <li *ngFor="let id of idList">
-        {{ id }}
-    </li>
-</ul>
+<div class="container-fluid row justify-content-md-center">
+    <div class="col-3 m-2" *ngFor="let id of test">
+        <app-live-coin [coin]="id"></app-live-coin>
+    </div>
+</div>
