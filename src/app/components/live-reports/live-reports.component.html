@@ -1,5 +1,5 @@
-<div class="container-fluid row justify-content-md-center">
-    <div class="col-3 m-2" *ngFor="let id of test">
-        <app-live-coin [coin]="id"></app-live-coin>
+<div class="container-fluid row justify-content-center">
+    <div class="col-md-3 m-2" *ngFor="let coin of liveList">
+        <app-live-coin [coin]="coin"></app-live-coin>
     </div>
 </div>
