@@ -1,15 +1,16 @@
 <div class="card h-100 bg-light">
-<img src="{{ coin.pic }}" width="100%">
-<figcaption>{{ coin.id }}</figcaption>
-<ul [ngClass]="{'bg-danger': bg && red, 'bg-success': bg && green, 'bg-info': bg && !red && !green, 'text-success': green, 'text-danger': red}">
-    <li>
-        {{ coin.usd | currency:'USD' }}
-    </li>
-    <li>
-        {{ coin.eur | currency:'EUR' }}
-    </li>
-    <li>
-        {{ coin.ils | currency:'ILS' }}
-    </li>
-</ul>
+    <img src="{{ coin.pic }}" width="100%">
+    <figcaption>{{ coin.id }}</figcaption>
+    <br>
+    <ul [ngClass]="{'bg-danger': bg && red, 'bg-success': bg && green, 'bg-info': bg && !red && !green, 'text-success': green, 'text-danger': red}">
+        <li>
+            {{ coin.usd | currency:'USD' }}
+        </li>
+        <li>
+            {{ coin.eur | currency:'EUR' }}
+        </li>
+        <li>
+            {{ coin.ils | currency:'ILS' }}
+        </li>
+    </ul>
 </div>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CoinInfoModel } from 'src/app/models/coin-info-model';
 
 @Component({
   selector: 'app-live-coin',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./live-coin.component.css']
 })
 export class LiveCoinComponent implements OnInit {
-  @Input() coin;
+  @Input() coin: CoinInfoModel;
   bg = false;
   red = false;
   green = false;
@@ -14,7 +15,7 @@ export class LiveCoinComponent implements OnInit {
   constructor() {  }
   
   ngOnInit(): void {
-    setTimeout(a => this.bg = false, 330, this.bg = true);
+    setTimeout(func => this.bg = false, 350, this.bg = true);
     if(this.coin.usd > this.coin.cache){
       this.green = true;
       this.red = false;
