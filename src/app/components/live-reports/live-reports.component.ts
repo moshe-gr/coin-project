@@ -21,7 +21,7 @@ export class LiveReportsComponent implements OnInit{
         this.apiService.getInfo(this.idList[i]).subscribe(info => this.liveList.push({id: info.id, pic: info.image.large, cache: info.market_data.current_price.usd, usd: info.market_data.current_price.usd, ils: info.market_data.current_price.ils, eur: info.market_data.current_price.eur}));
       }
     }
-    setInterval(func => {
+    setInterval(() => {
       for(let j = 0; j < this.liveList.length; j++){
         if(!this.idList.find(id => id == this.liveList[j].id)){
           this.liveList.splice(j, 1);

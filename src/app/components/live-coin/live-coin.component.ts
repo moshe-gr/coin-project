@@ -15,7 +15,7 @@ export class LiveCoinComponent implements OnInit {
   constructor() {  }
   
   ngOnInit(): void {
-    setTimeout(func => this.bg = false, 350, this.bg = true);
+    setTimeout(() => this.bg = false, 350, this.bg = true);
     if(this.coin.usd > this.coin.cache){
       this.green = true;
       this.red = false;
