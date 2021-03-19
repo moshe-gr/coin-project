@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CoinInfoModel } from 'src/app/models/coin-info-model';
 
+
 @Component({
   selector: 'app-live-coin',
   templateUrl: './live-coin.component.html',

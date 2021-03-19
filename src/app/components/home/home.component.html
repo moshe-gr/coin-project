@@ -1,4 +1,5 @@
-<main class="container-fluid parallax px-md-5">
+<main id="top" class="container-fluid parallax px-md-5">
+    <a href="#top" title="Back to top" class="fixed-bottom m-2"><img src="assets/arrow-up-circle.svg" alt="Back to top"></a>
     <br><br><br><br>
     <div class="row" *ngIf="coinList.length > 5">
         <app-card [card]="card" *ngFor="let card of coinList" class="col-md-4 col-xl-3 py-2"></app-card>
